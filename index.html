@@ -1,91 +1,240 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login and Registration</title>
-    <style>
-        /* Add some basic styling for the form */
-        body {
-            font-family: Arial, sans-serif;
-        }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .form-group button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .form-group button:hover {
-            background-color: #45a049;
-        }
-    </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>Login</h2>
-    <form action="login.php" method="post">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+<div class="">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">E-Commerce</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search products..." aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </li>
+                    <li class="nav-item dropdown" hidden>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Settings
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Privacy Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class a="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a hidden class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+		    <li> 
+			 <button type="button" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addProductModal">
+        Add Product
+    </button>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+ <form>
+                        <div class="form-group">
+                            <label for="productName">Product Name</label>
+                            <input type="text" class="form-control" id="productName" placeholder="Enter product name">
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Price</label>
+                            <input type="text" class="form-control" id="productPrice" placeholder="Enter price">
+                        </div>
+                        <div class="form-group">
+                            <label for="productDescription">Description</label>
+                            <textarea class="form-control" id="productDescription" rows="4" placeholder="Enter product description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addProduct()">Add Product</button>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+    </div>
+</li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <button type="button" class="btn btn-primary position-relative">
+                        Cart
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            0
+                            <span class="visually-hidden">Item count</span>
+                        </span>
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <button type="submit">Login</button>
-        </div>
-    </form>
+    </nav>
 </div>
 
-<div class="container">
-    <h2>Register</h2>
-    <form action="register.php" method="post">
-        <div class="form-group">
-            <label for="newUsername">New Username</label>
-            <input type="text" id="newUsername" name="newUsername" required>
+<div class="container mt-5">
+    <div class="row">
+        <!-- Card 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="https://media.karousell.com/media/photos/products/2022/3/9/nike_dunk_low_retro_blackwhite_1646823881_44c4cfee.jpg" class="card-img-top" alt="Nike Dunk Low Retro">
+                <div class="card-body">
+                    <h5 class="card-title">Nike Dunk Low Retro</h5>
+                    <p class="card-text">Nike Dunk Low Retro returns with crisp overlays and original team colors. This basketball icon channels '80s vibes with premium leather in the upper that looks good and breaks in even better. Modern footwear technology helps bring the comfort into the 21st century.</p>
+                    <ul>
+                        <li>Color Shown: White/Grey Fog</li>
+                        <li>Style: DD1391-103</li>
+                    </ul>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <p class="card-text">
+                        Price:
+                        <span style="background-color: black"> <font color="White"> ₱5,495 </font> </span>
+                    </p>
+                    <button type="button" class="btn btn-outline-success mt-2" data-bs-toggle="modal" data-bs-target="#product1Modal">Add to Cart</button>
+                    <button type="button" class="btn btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#product1Modal">💜</button>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="newPassword">New Password</label>
-            <input type="password" id="newPassword" name="newPassword" required>
+
+        <!-- Card 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="https://cdn.sanity.io/images/c1chvb1i/production/ad0af1113eca4956840d369e9cb091e3003f0811-1100x735.jpg" class="card-img-top" alt="Nike Dunk Low">
+                <div class="card-body">
+                    <h5 class="card-title">Nike Dunk Low</h5>
+                    <p class="card-text">Created for the hardwood but taken to the streets, the basketball icon returns in aged neutrals that deliver heritage hoops flair. Channelling '80s vibes, its padded, low-cut collar lets you take your game anywhere—in comfort.</p>
+                    <ul>
+                        <li>Color Shown: Sail/Coconut Milk/White/Deep Jungle</li>
+                        <li>Style: FQ8080-133</li>
+                    </ul>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <p class="card-text">
+                        Price:
+                        <span style="background-color: black"> <font color="White"> ₱5,495 </font> </span>
+                    </p>
+                    <button type="button" class="btn btn-outline-success mt-2" data-bs-toggle="modal" data-bs-target="#product2Modal">Add to Cart</button>
+                    <button type="button" class="btn btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#product2Modal">💜</button>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <button type="submit">Register</button>
+
+        <!-- Card 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="https://static.nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/k9tssjlqrjxr1sd6huny/air-more-uptempo-white-and-varsity-red-release-date.jpg" class="card-img-top" alt="Nike Air More Uptempo '96">
+                <div class="card-body">
+                    <h5 class="card-title">Nike Air More Uptempo '96</h5>
+                    <p class="card-text">The Nike Air More Uptempo '96 refreshes an original that has reigned supreme for more than 20 years. With a design inspired by high-flying basketball style and '90s graffiti art, it can't help but turn heads off the court.</p>
+                    <ul>
+                        <li>Color Shown: Baroque Brown/Pale Ivory/Mystic Red/Sesame</li>
+                        <li>Style: FB8883-200</li>
+                    </ul>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <p class="card-text">
+                        Price:
+                        <span style="background-color: grey"> <font color="White"> ₱9,895 </font> </span>
+                    </p>
+                    <button type="button" class="btn btn-outline-success mt-2" data-bs-toggle="modal" data-bs-target="#product3Modal">Add to Cart</button>
+                    <button type="button" class="btn btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#product3Modal">💜</button>
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
+</div>
+
+<!-- Modals -->
+<!-- Product 1 Modal -->
+<div class="modal fade" id="product1Modal" tabindex="-1" aria-labelledby="product1ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="product1ModalLabel">Product Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/d01ef37b-c14a-4edd-8787-534f5732294c/dunk-low-retro-shoe-66RGqF.png" class="img-fluid" alt="Nike Dunk Low Retro">
+                <p>Price: ₱5,495</p>
+                <h6>Available Sizes:</h6>
+                <p>EURO 40, 40.5, 41.5, 42, 42.5, 43.5, 44, 44.5, 45, 46, 46.5, 47, 48</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product 2 Modal -->
+<div class="modal fade" id="product2Modal" tabindex="-1" aria-labelledby="product2ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="product2ModalLabel">Product Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/009930cf-e4e1-4e59-992d-fc5b42a14d95/dunk-low-shoes-T4Ckpv.png" class="img-fluid" alt="Nike Dunk Low">
+                <p>Price: ₱5,495</p>
+                <h6>Available Sizes:</h6>
+                <p>EURO 40, 40.5, 41.5, 42, 42.5, 43.5, 44, 44.5, 45, 46, 46.5, 47, 48</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product 3 Modal -->
+<div class="modal fade" id="product3Modal" tabindex="-1" aria-labelledby="product3ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="product3ModalLabel">Product Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/30707017-6950-4d9e-bcfb-e5fe01336a9d/air-more-uptempo-96-shoes-cWgPmS.png" class="img-fluid" alt="Nike Air More Uptempo '96">
+                <p>Price: ₱9,895</p>
+                <h6>Available Sizes:</h6>
+                <p>EURO 40, 40.5, 41.5, 42, 42.5, 43.5, 44, 44.5, 45, 46, 46.5, 47, 48</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Place Order</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
